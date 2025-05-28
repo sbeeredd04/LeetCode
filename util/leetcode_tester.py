@@ -150,12 +150,12 @@ class LeetCodeTester:
             self.execution_times.append(result["time"])
             
             if verbose:
-                self._print_test_result(result, i+1, len(self.tests))
+                self._print_test_result(result, i+1, len(self.tests), verbose)
         
         self._print_summary()
         return self.test_results
     
-    def _print_test_result(self, result, test_num, total_tests):
+    def _print_test_result(self, result, test_num, total_tests, verbose=False):
         """Print the result of a single test."""
         if result["passed"]:
             status = colored("✓ PASS", "green") if HAS_COLORS else "✓ PASS"
