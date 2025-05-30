@@ -10,9 +10,9 @@ class Solution:
         s_list.sort()
         t_list.sort()
         
-        while s_list:
-            if s_list.pop() != t_list.pop():
-                return False
+        if ''.join(s_list) != ''.join(t_list):
+            return False
+
         return True
     
 if __name__ == "__main__":
