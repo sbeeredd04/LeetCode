@@ -1,4 +1,5 @@
 from typing import List
+import math
 
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
@@ -17,7 +18,7 @@ class Solution:
             mid = (left + right) // 2
             
             #calculate the total hours needed to eat all the bananas at the current speed
-            total_hours = sum((pile + mid - 1) // mid for pile in piles)
+            total_hours = sum( math.ceil(pile/mid) for pile in piles)
             
             #if the total hours is less than required then right = mid
             if total_hours <= h:
@@ -28,7 +29,7 @@ class Solution:
                 left = mid + 1
                 
         #return the minimum eating speed
-        return left   
+        return left 
     
 # Example usage
 if __name__ == "__main__":
