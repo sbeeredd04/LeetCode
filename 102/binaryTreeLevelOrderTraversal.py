@@ -7,8 +7,10 @@
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         
+        #list to hold the result of level order traversal
         res = []
 
+        # Helper function to perform level order traversal recursively
         def level_order_rec(root, level, res):
             # Base case: If node is null, return
             if root is None:
@@ -25,5 +27,6 @@ class Solution:
             level_order_rec(root.left, level + 1, res)
             level_order_rec(root.right, level + 1, res)
         
+        # Start the recursive traversal from the root at level 0
         level_order_rec(root, 0, res)
         return res

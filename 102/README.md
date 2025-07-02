@@ -144,7 +144,7 @@ Using the same tree:
     15   7
 ```
 
-#### Initial State:
+#### Initial State :
 ```
 queue = [3]
 result = []
