@@ -298,11 +298,13 @@ graph TD
     A --> C[Max-Heap]
     B --> D[heappush]
     B --> E[heappop]
+    C --> F[Negate values for max-heap]
 ```
 
 **Problems:**
 - [703. Kth Largest Element in a Stream](./703/README.md)
 - [347. Top K Frequent Elements](./347/README.md)
+- [1046. Last Stone Weight](./1046/README.md)
 - [Notes on heapq library](./Notes.md)
 
 ---
