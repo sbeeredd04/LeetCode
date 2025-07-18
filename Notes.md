@@ -312,11 +312,25 @@ graph TD
 
 ---
 
-## More Topics
-- [36. Valid Sudoku](./36/README.md)
-- [42. Trapping Rain Water](./42/README.md)
-- [49. Group Anagrams](./49/README.md)
+## Backtracking
+
+**Concept:** Systematically search for a solution by exploring all possible options and backtracking when a path fails. Used for generating combinations, permutations, and solving constraint problems.
+
+**Main Code Idea:** Build candidates incrementally, explore further, and backtrack (undo the last step) when necessary.
+
+```mermaid
+graph TD
+    A[Start] --> B[Choose Option]
+    B --> C[Recurse]
+    C --Valid?--> D[Add to Result]
+    C --Backtrack--> B
+```
+
+**Problems:**
+- [78. Subsets](./78/README.md)
 - [22. Generate Parentheses](./22/README.md)
+- [46. Permutations](#) *(add if available)*
+- [39. Combination Sum](#) *(add if available)*
 
 ---
 
