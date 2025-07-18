@@ -329,8 +329,7 @@ graph TD
 **Problems:**
 - [78. Subsets](./78/README.md)
 - [22. Generate Parentheses](./22/README.md)
-- [46. Permutations](#) *(add if available)*
-- [39. Combination Sum](#) *(add if available)*
+- [39. Combination Sum](./39/README.md)
 
 ---
 
