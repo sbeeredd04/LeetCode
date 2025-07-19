@@ -331,6 +331,7 @@ graph TD
 - [22. Generate Parentheses](./22/README.md)
 - [39. Combination Sum](./39/README.md)
 - [40. Combination Sum II](./40/README.md)
+- [46. Permutations](./46/README.md)
 
 ---
 
