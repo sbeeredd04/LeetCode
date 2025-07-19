@@ -330,6 +330,7 @@ graph TD
 - [78. Subsets](./78/README.md)
 - [22. Generate Parentheses](./22/README.md)
 - [39. Combination Sum](./39/README.md)
+- [40. Combination Sum II](./40/README.md)
 
 ---
 
