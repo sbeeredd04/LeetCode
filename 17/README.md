@@ -98,13 +98,39 @@ class Solution:
 ## Code Walkthrough (Mermaid Diagram)
 ```mermaid
 flowchart TD
-    Start([Start]) --> CheckEmpty[Check if digits is empty]
+    Start([Start]) --> CheckEmpty{Is digits empty?}
     CheckEmpty -- Yes --> ReturnEmpty[Return []]
-    CheckEmpty -- No --> Backtrack[Call backtrack(0, "")]
-    Backtrack --> ForEachDigit[For each digit in digits]
-    ForEachDigit --> ForEachLetter[For each letter in keys[digit]]
-    ForEachLetter --> Recurse[Recurse with next index and curr + letter]
-    Recurse --> End[If index == len(digits), add curr to result]
+    CheckEmpty -- No --> Init[Initialize keys dict and combinations list]
+    Init --> CallBacktrack[Call backtrack(0, "")]
+    CallBacktrack --> BacktrackFunc[backtrack(index, curr)]
+    BacktrackFunc --> IsEnd{index == len(digits)?}
+    IsEnd -- Yes --> AddResult[Add curr to combinations]
+    IsEnd -- No --> GetDigit[Get digit = digits[index]]
+    GetDigit --> GetLetters[Get letters = keys[int(digit)]]
+    GetLetters --> ForEachLetter[For each letter in letters]
+    ForEachLetter --> AppendLetter[Append letter to curr]
+    AppendLetter --> Recurse[Call backtrack(index+1, curr+letter)]
+    Recurse --> BacktrackFunc
+
+    %% Example Walkthrough for digits = "23"
+    subgraph Example: digits = "23"
+        EStart([Start]) --> ECheckEmpty{Is digits empty?}
+        ECheckEmpty -- No --> EInit[Initialize keys and combinations]
+        EInit --> ECallBacktrack[Call backtrack(0, "")]
+        ECallBacktrack --> EIndex0[At index 0: digit = '2', letters = 'abc']
+        EIndex0 --> EA[Choose 'a']
+        EA --> EIndex1[At index 1: digit = '3', letters = 'def']
+        EIndex1 --> EAD[Choose 'd']
+        EAD --> EEnd1[At index 2: index == len(digits), add 'ad']
+        EIndex1 --> EAE[Choose 'e']
+        EAE --> EEnd2[At index 2: add 'ae']
+        EIndex1 --> EAF[Choose 'f']
+        EAF --> EEnd3[At index 2: add 'af']
+        EIndex0 --> EB[Choose 'b']
+        EB --> EB1[Repeat process for 'b' + 'd','e','f' → 'bd','be','bf']
+        EIndex0 --> EC[Choose 'c']
+        EC --> EC1[Repeat process for 'c' + 'd','e','f' → 'cd','ce','cf']
+    end
 ```
 
 ---
