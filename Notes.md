@@ -529,6 +529,7 @@ graph TD
 - [78. Subsets](./78/README.md)
 - [90. Subsets II](./90/README.md)
 - [131. Palindrome Partitioning](./131/README.md)
+- [79. Word Search](./79/README.md)
 </details>
 
 ### Quick Tips
