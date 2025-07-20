@@ -19,7 +19,7 @@ Output: false
 
 ## Initial Hunch and Hints
 <details>
-<summary>🤔 My First Thoughts</summary>
+<summary>► My First Thoughts</summary>
 
 When I first saw this problem, my immediate thought was:
 > "This looks like I need to explore the board systematically, trying to match letters one by one!"
@@ -37,7 +37,7 @@ This led me to the solution approach below!
 </details>
 
 <details>
-<summary>💡 Key Insights That Helped</summary>
+<summary>▲ Key Insights That Helped</summary>
 
 - **Try every possible starting position**: Don't assume the word starts at (0,0)
 - **Backtracking is perfect here**: Explore a path, and if it doesn't work, backtrack and try another
@@ -46,7 +46,7 @@ This led me to the solution approach below!
 </details>
 
 <details>
-<summary>🚨 Common Pitfalls I Avoided</summary>
+<summary>⚠ Common Pitfalls I Avoided</summary>
 
 - **Forgetting to try all starting positions**: Initially I thought about starting from (0,0) only
 - **Not cleaning up visited set**: After exploring a path, I need to remove the cell from visited
@@ -161,54 +161,91 @@ def exist_with_debug(self, board: list[list[str]], word: str) -> bool:
 
 ## Algorithm Flow Diagram
 
-Based on the debugging trace, here's how the algorithm works:
+Based on the detailed debug execution trace for word "ABCCED", here's the actual algorithm flow:
 
 ```mermaid
 flowchart TD
-    A[Start: For each cell in board] --> B{Cell == word[0]?}
-    B --No--> A
-    B --Yes--> C[Call track(row, col, 0)]
+    A[Start: Board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], Word = "ABCCED"] --> B[Find cells with first letter 'A']
+    B --> C[Try starting at (0,0)]
     
-    C --> D[track function starts]
-    D --> E{word_index == len(word)?}
-    E --Yes--> F[🎉 SUCCESS! Return True]
-    E --No--> G{Valid position & not visited & char match?}
+    C --> D[call_1: track(0,0,0)]
+    D --> E[Cell[0][0] = 'A', Looking for 'A']
+    E --> F[MATCH! Add (0,0) to visited]
     
-    G --No--> H[❌ Return False]
-    G --Yes--> I[Add to visited set]
+    F --> G[Explore 4 directions]
+    G --> H[Try DOWN (1,0)]
+    G --> I[Try UP (-1,0)]
+    G --> J[Try RIGHT (0,1)]
+    G --> K[Try LEFT (0,-1)]
     
-    I --> J[Explore 4 directions]
-    J --> K[track(row+1, col, word_index+1)]
-    J --> L[track(row-1, col, word_index+1)]
-    J --> M[track(row, col+1, word_index+1)]
-    J --> N[track(row, col-1, word_index+1)]
+    H --> L[call_2: Cell[1][0] = 'S', want 'B']
+    L --> M[CHAR_MISMATCH - return False]
     
-    K --> O{Any direction returns True?}
-    L --> O
-    M --> O  
-    N --> O
+    I --> N[call_3: (-1,0)]
+    N --> O[OUT_OF_BOUNDS - return False]
     
-    O --Yes--> P[Remove from visited & Return True]
-    O --No--> Q[Remove from visited & Return False]
+    J --> P[call_4: track(0,1,1)]
+    P --> Q[Cell[0][1] = 'B', Looking for 'B']
+    Q --> R[MATCH! Add (0,1) to visited]
     
-    P --> R[Backtrack complete]
-    Q --> R
+    R --> S[Explore from (0,1)]
+    S --> T[Try RIGHT (0,2)]
+    T --> U[call_7: track(0,2,2)]
+    U --> V[Cell[0][2] = 'C', Looking for 'C']
+    V --> W[MATCH! Add (0,2) to visited]
     
-    F --> S[Word found!]
-    H --> T{More starting positions?}
-    R --> T
-    T --Yes--> A
-    T --No--> U[Word not found]
+    W --> X[Try DOWN from (0,2)]
+    X --> Y[call_8: track(1,2,3)]
+    Y --> Z[Cell[1][2] = 'C', Looking for 'C']
+    Z --> AA[MATCH! Add (1,2) to visited]
     
-    style F fill:#90EE90
-    style S fill:#90EE90
-    style H fill:#FFB6C1
-    style U fill:#FFB6C1
+    AA --> BB[Try DOWN from (1,2)]
+    BB --> CC[call_9: track(2,2,4)]
+    CC --> DD[Cell[2][2] = 'E', Looking for 'E']
+    DD --> EE[MATCH! Add (2,2) to visited]
+    
+    EE --> FF[Try LEFT from (2,2)]
+    FF --> GG[call_13: track(2,1,5)]
+    GG --> HH[Cell[2][1] = 'D', Looking for 'D']
+    HH --> II[MATCH! Add (2,1) to visited]
+    
+    II --> JJ[Try UP from (2,1)]
+    JJ --> KK[call_15: track(1,1,6)]
+    KK --> LL[word_index = 6 = len(word)]
+    LL --> MM[SUCCESS! Word found!]
+    
+    MM --> NN[Backtrack: Remove (2,1)]
+    NN --> OO[Backtrack: Remove (2,2)]
+    OO --> PP[Backtrack: Remove (1,2)]
+    PP --> QQ[Backtrack: Remove (0,2)]
+    QQ --> RR[Backtrack: Remove (0,1)]
+    RR --> SS[Backtrack: Remove (0,0)]
+    SS --> TT[Return True - Path found!]
+    
+    M --> UU[Continue other directions...]
+    O --> UU
+    UU --> VV[All directions tried, return result]
+    
+    style MM fill:#90EE90
+    style TT fill:#90EE90
+    style M fill:#FFB6C1
+    style O fill:#FFB6C1
+    style LL fill:#90EE90
+    
+    WW[Successful Path: (0,0)→(0,1)→(0,2)→(1,2)→(2,2)→(2,1)]
+    MM --> WW
 ```
+
+### Key Execution Points:
+- **Call Sequence**: 15 total recursive calls made
+- **Successful Path**: (0,0) → (0,1) → (0,2) → (1,2) → (2,2) → (2,1)
+- **Word Progress**: A → B → C → C → E → D (complete)
+- **Backtracking**: Properly removed all visited cells in reverse order
+- **Early Terminations**: OUT_OF_BOUNDS and CHAR_MISMATCH efficiently pruned invalid paths
 
 ## Self-Reflection: What I Did and Learned
 
-### 💪 What I Did Well
+### ▲ What I Did Well
 
 **1. Recognized the Pattern Immediately**
 I'm getting really good at spotting backtracking problems! The moment I saw "explore paths" and "can't reuse cells," I knew this was a classic DFS + backtracking situation. That pattern recognition is getting stronger with each problem I solve.
@@ -222,10 +259,10 @@ I knew I needed to track visited cells, and more importantly, I remembered to **
 **4. Separated Concerns with Helper Function**
 Creating the `inBounds` helper function was smart - it keeps the main logic clean and makes the code more readable. I'm getting better at writing modular code!
 
-### 🤔 What I Struggled With
+### ▼ What I Struggled With
 
 
-### 🧠 Problem-Solving Process That Worked
+### ■ Problem-Solving Process That Worked
 
 **Step 1: High-Level Strategy**
 - "I need to find a word in a grid by exploring adjacent cells"
@@ -242,7 +279,7 @@ Creating the `inBounds` helper function was smart - it keeps the main logic clea
 - Implement the recursive backtracking function
 - Handle bounds checking, visited tracking, and character matching
 
-### 🎯 What I'd Do Differently Next Time
+### ► What I'd Do Differently Next Time
 
 **1. Start with Crystal Clear Variable Names**
 ```python
@@ -260,7 +297,7 @@ I spent time trying to trace through the logic in my head. Next time, I'll add d
 **4. Test Small Examples First**
 I should test with a 2x2 grid and a 3-letter word first, then work up to larger examples.
 
-### 🔍 Key Insights I'll Remember
+### ◆ Key Insights I'll Remember
 
 **1. Backtracking Template Recognition**  
 This problem perfectly follows the backtracking template:
@@ -290,14 +327,14 @@ For grid traversal problems:
 **3. Multiple Starting Points**
 Don't assume problems start from a specific position. Often you need to try all possible starting points.
 
-### 📈 How This Problem Helped Me Grow
+### ▲ How This Problem Helped Me Grow
 
 **Pattern Recognition:** I'm getting faster at identifying DFS + backtracking problems  
 **Edge Case Thinking:** I caught the "multiple starting positions" requirement early  
 **Code Organization:** Using helper functions makes complex problems more manageable  
 **Debugging Skills:** I'm learning to add strategic debug output to trace algorithm execution
 
-### 🎉 What I'm Proud Of
+### ★ What I'm Proud Of
 
 Even with the variable naming issues, my core algorithm logic was solid! I understood:
 - Need to try all starting positions  
@@ -307,7 +344,7 @@ Even with the variable naming issues, my core algorithm logic was solid! I under
 
 That shows my backtracking fundamentals are getting strong, even if my implementation details need work.
 
-### 🚀 Next Steps for Improvement  
+### ➤ Next Steps for Improvement  
 
 1. **Practice more grid-based backtracking problems** to reinforce the patterns
 2. **Always use descriptive variable names** - no shortcuts with i, j, k
@@ -315,7 +352,7 @@ That shows my backtracking fundamentals are getting strong, even if my implement
 4. **Add debug output early** in complex recursive algorithms
 5. **Test with simple examples** before moving to complex test cases
 
-This problem was really fun to solve, and even though I made some implementation mistakes, I feel like my problem-solving approach is getting much stronger! 🎯
+This problem was really fun to solve, and even though I made some implementation mistakes, I feel like my problem-solving approach is getting much stronger!
 
 ---
 
