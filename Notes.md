@@ -350,80 +350,194 @@ graph TD
 ---
 
 ## Trees
+<details>
+<summary>Click to expand Trees concepts and problems</summary>
 
-**Concept:** Hierarchical data structure with parent-child relationships.
+### Concept Overview
+Hierarchical data structures with parent-child relationships, perfect for representing nested or hierarchical data.
 
-**Main Code Idea:** Use recursion or BFS/DFS to traverse, search, or modify trees.
+### [📘 Detailed Notes](./notes/Notes_Trees.md)
+
+### Main Code Idea
+Use recursion or BFS/DFS to traverse, search, or modify trees. Master the recursive patterns for most tree problems.
+
+<details>
+<summary>Visual Pattern</summary>
 
 ```mermaid
 graph TD
-    A[Root] --> B[Left]
-    A --> C[Right]
-    B --> D[Left.Left]
-    C --> E[Right.Right]
+    A[Root] --> B[Left Subtree]
+    A --> C[Right Subtree]
+    B --> D[DFS: Depth First]
+    C --> E[BFS: Breadth First]
+    D --> F[Preorder/Inorder/Postorder]
+    E --> G[Level Order]
 ```
+</details>
 
-**Problems:**
+### Common Patterns
+- Recursive tree traversal (DFS)
+- Level-order traversal (BFS)
+- Path tracking and state passing
+- BST property utilization
+- Bottom-up vs top-down recursion
+
+### Problems by Difficulty
+<details>
+<summary>Easy</summary>
+
+- [100. Same Tree](./100/README.md)
 - [104. Maximum Depth of Binary Tree](./104/README.md)
+- [110. Balanced Binary Tree](./110/README.md)
 - [226. Invert Binary Tree](./226/README.md)
+- [235. Lowest Common Ancestor of a BST](./235/README.md)
+</details>
+
+<details>
+<summary>Medium</summary>
+
+- [98. Validate Binary Search Tree](./98/README.md)
+- [102. Binary Tree Level Order Traversal](./102/README.md)
+- [230. Kth Smallest Element in a BST](./230/README.md)
 - [543. Diameter of Binary Tree](./543/README.md)
 - [572. Subtree of Another Tree](./572/README.md)
 - [1448. Count Good Nodes in Binary Tree](./1448/README.md)
-- [230. Kth Smallest Element in a BST](./230/README.md)
-- [235. Lowest Common Ancestor of a BST](./235/README.md)
-- [98. Validate Binary Search Tree](./98/README.md)
+</details>
+
+### Quick Tips
+- Most tree problems use recursion naturally
+- Consider both DFS and BFS approaches
+- Pass state through recursion parameters
+- Use BST properties for efficient searches
+- Watch for null node edge cases
+</details>
 
 ---
 
 ## Heap / Priority Queue
+<details>
+<summary>Click to expand Heap / Priority Queue concepts and problems</summary>
 
-**Concept:** Specialized tree-based structure for efficiently retrieving the min/max element.
+### Concept Overview
+Specialized tree-based structure for efficiently retrieving the min/max element, perfect for top-k problems and priority-based processing.
 
-**Main Code Idea:** Use a heap to maintain a dynamic set of elements, always able to access the smallest/largest in O(log n) time.
+### [📘 Detailed Notes](./notes/Notes_Heap.md)
+
+### Main Code Idea
+Use a heap to maintain dynamic access to extremes (min/max). Master the top-k pattern and max-heap simulation.
+
+<details>
+<summary>Visual Pattern</summary>
 
 ```mermaid
 graph TD
-    A[Heap] --> B[Min-Heap]
-    A --> C[Max-Heap]
+    A[Heap] --> B[Min-Heap Default]
+    A --> C[Max-Heap Simulated]
     B --> D[heappush]
     B --> E[heappop]
-    C --> F[Negate values for max-heap]
-    B --> G[Heapify list of lists: key at index 0]
+    C --> F[Negate values: -x]
+    C --> G[Remember to negate back]
+    B --> H[Perfect for Kth Largest]
+    C --> I[Perfect for Kth Smallest]
 ```
+</details>
 
-**Problems:**
+### Common Patterns
+- Top-k element problems
+- Streaming data processing
+- Priority queue operations
+- Max-heap simulation with negation
+- Merge k sorted structures
+
+### Problems by Difficulty
+<details>
+<summary>Easy</summary>
+
 - [703. Kth Largest Element in a Stream](./703/README.md)
-- [347. Top K Frequent Elements](./347/README.md)
 - [1046. Last Stone Weight](./1046/README.md)
+</details>
+
+<details>
+<summary>Medium</summary>
+
+- [215. Kth Largest Element in an Array](./215/README.md)
+- [347. Top K Frequent Elements](./347/README.md)
+- [621. Task Scheduler](./621/README.md)
 - [973. K Closest Points to Origin](./973/README.md)
-- [215. Kth Largest Element in an Array](./215/README.md) <!-- Added link here -->
-- [Notes on heapq library](./Notes.md)
+</details>
+
+### Quick Tips
+- Python heapq is min-heap only - negate for max-heap
+- Use heap for top-k problems efficiently
+- Keep heap size at k for optimal space
+- Remember heap[0] gives minimum (don't pop if just peeking)
+- Use heapify() for bulk initialization
+</details>
 
 ---
 
 ## Backtracking
+<details>
+<summary>Click to expand Backtracking concepts and problems</summary>
 
-**Concept:** Systematically search for a solution by exploring all possible options and backtracking when a path fails. Used for generating combinations, permutations, and solving constraint problems.
+### Concept Overview
+Systematically search for solutions by exploring all possibilities and backtracking when paths fail. Essential for combinatorial and constraint satisfaction problems.
 
-**Main Code Idea:** Build candidates incrementally, explore further, and backtrack (undo the last step) when necessary.
+### [📘 Detailed Notes](./notes/Notes_Backtracking.md)
+
+### Main Code Idea
+Build solutions incrementally using the choose-explore-unchoose pattern. Master the recursive template for combinations and permutations.
+
+<details>
+<summary>Visual Pattern</summary>
 
 ```mermaid
 graph TD
-    A[Start] --> B[Choose Option]
-    B --> C[Recurse]
-    C --Valid?--> D[Add to Result]
-    C --Backtrack--> B
+    A[Start State] --> B[Choose Option]
+    B --> C[Recurse with Choice]
+    C --> D{Valid Solution?}
+    D --Yes--> E[Add to Results]
+    D --No/Continue--> F[More Choices?]
+    F --Yes--> G[Unchoose & Try Next]
+    F --No--> H[Backtrack Up]
+    G --> B
+    H --> I[Return to Previous Level]
 ```
+</details>
 
-**Problems:**
-- [78. Subsets](./78/README.md)
+### Common Patterns
+- Choose-Explore-Unchoose template
+- Constraint checking and early pruning
+- Duplicate handling with sorting
+- Path copying for result collection
+- State restoration after recursion
+
+### Problems by Difficulty
+<details>
+<summary>Easy</summary>
+
+- [17. Letter Combinations of a Phone Number](./17/README.md)
 - [22. Generate Parentheses](./22/README.md)
+</details>
+
+<details>
+<summary>Medium</summary>
+
 - [39. Combination Sum](./39/README.md)
 - [40. Combination Sum II](./40/README.md)
 - [46. Permutations](./46/README.md)
+- [78. Subsets](./78/README.md)
 - [90. Subsets II](./90/README.md)
-- [17. Letter Combinations of a Phone Number](./17/README.md)
 - [131. Palindrome Partitioning](./131/README.md)
+</details>
+
+### Quick Tips
+- Always copy the path when adding to results: `result.append(path.copy())`
+- Sort input arrays to handle duplicates easier
+- Use start index for combinations, boolean array for permutations
+- Implement early pruning to optimize performance
+- Remember the backtrack step: `path.pop()`
+</details>
 
 ---
 
