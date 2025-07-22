@@ -1,124 +1,3 @@
-# Python `heapq` Library - Comprehensive Notes
-
-## Overview
-`heapq` is Python's built-in library for implementing heaps (priority queues). It provides an efficient way to maintain a heap data structure using a regular Python list. By default, `heapq` implements a **min-heap** (the smallest element is always at the root).
-
----
-
-## Core Methods and Their Usage
-
-### 1. `heapq.heapify(x)`
-- Transforms a list `x` into a heap, in-place, in O(n) time.
-- After calling, `x[0]` is the smallest element.
-
-```python
-import heapq
-nums = [5, 2, 8, 1]
-heapq.heapify(nums)  # nums is now a valid min-heap: [1, 2, 8, 5]
-```
-
-### 2. `heapq.heappush(heap, item)`
-- Pushes `item` onto the heap, maintaining the heap invariant.
-- O(log n) time.
-
-```python
-heapq.heappush(nums, 3)  # nums becomes [1, 2, 8, 5, 3] (heap order)
-```
-
-### 3. `heapq.heappop(heap)`
-- Pops and returns the smallest item from the heap.
-- O(log n) time.
-
-```python
-smallest = heapq.heappop(nums)  # removes 1, nums is now [2, 3, 8, 5]
-```
-
-### 4. `heapq.heappushpop(heap, item)`
-- Pushes `item` on the heap, then pops and returns the smallest item.
-- More efficient than `heappush` followed by `heappop`.
-
-```python
-result = heapq.heappushpop(nums, 4)  # pushes 4, pops 2, returns 2
-```
-
-### 5. `heapq.heapreplace(heap, item)`
-- Pops and returns the smallest item, then pushes `item` onto the heap.
-- The heap size does not change.
-- More efficient than `heappop` followed by `heappush`.
-
-```python
-result = heapq.heapreplace(nums, 7)  # pops 3, pushes 7
-```
-
-### 6. `heapq.nlargest(n, iterable[, key=None])`
-- Returns a list with the `n` largest elements from the dataset.
-- Useful for quick top-k queries.
-
-```python
-top3 = heapq.nlargest(3, nums)  # returns 3 largest elements
-```
-
-### 7. `heapq.nsmallest(n, iterable[, key=None])`
-- Returns a list with the `n` smallest elements from the dataset.
-
-```python
-smallest2 = heapq.nsmallest(2, nums)  # returns 2 smallest elements
-```
-
----
-
-## How a Min-Heap Works (Mermaid Diagram)
-
-```mermaid
-graph TD
-    A[1] --> B[2]
-    A --> C[8]
-    B --> D[5]
-    C --> E[3]
-```
-- The smallest element (1) is always at the root.
-- Each parent node is less than or equal to its children.
-
----
-
-## Max-Heap with `heapq`
-- Python's `heapq` only provides a min-heap.
-- To simulate a max-heap, **push negative values** and invert when popping.
-
-```python
-maxheap = []
-heapq.heappush(maxheap, -val)  # push negatives
-maxval = -heapq.heappop(maxheap)  # pop and invert
-```
-
----
-
-## Practical Tips
-- Heaps are great for efficiently finding the smallest/largest elements in O(log n) time.
-- For fixed-size top-k problems, always keep the heap at size k for best performance.
-- `heapq` works in-place on lists; always use a list as the heap container.
-
----
-
-## Summary Table
-| Method                | Description                                 |
-|-----------------------|---------------------------------------------|
-| heapify(x)            | In-place transform list into heap           |
-| heappush(heap, item)  | Push item onto heap                         |
-| heappop(heap)         | Pop and return smallest item                |
-| heappushpop(heap, x)  | Push then pop smallest (more efficient)     |
-| heapreplace(heap, x)  | Pop smallest, then push x                   |
-| nlargest(n, iter)     | Return n largest elements                   |
-| nsmallest(n, iter)    | Return n smallest elements                  |
-
----
-
-## References
-- [Python heapq documentation](https://docs.python.org/3/library/heapq.html)
-- [Real Python: Heap queue (priority queue) algorithm](https://realpython.com/python-heaps/)
-
----
-
 # LeetCode Master Notes & Topic Map
 
 Welcome! This document is a master index and concept guide for your LeetCode solutions, organized by major algorithmic topics. Each section includes a high-level explanation, a mermaid diagram for intuition, and links to your detailed notes and solutions for each problem.
@@ -126,10 +5,19 @@ Welcome! This document is a master index and concept guide for your LeetCode sol
 ---
 
 ## Arrays & Hashing
+<details>
+<summary>Click to expand Arrays & Hashing concepts and problems</summary>
 
-**Concept:** Arrays are the foundation of most coding problems. Hashing (using dictionaries/sets) allows for fast lookups and deduplication.
+### Concept Overview
+Arrays are the foundation of most coding problems. Hashing (using dictionaries/sets) allows for fast lookups and deduplication.
 
-**Main Code Idea:** Use arrays for sequential data, and hash tables for O(1) lookups, frequency counting, and deduplication.
+### [📘 Detailed Notes](./notes/Notes_Arrays_and_Hashing.md)
+
+### Main Code Idea
+Use arrays for sequential data, and hash tables for O(1) lookups, frequency counting, and deduplication.
+
+<details>
+<summary>Visual Pattern</summary>
 
 ```mermaid
 graph TD
@@ -138,23 +26,58 @@ graph TD
     A --> D[Two Pointers]
     A --> E[Sliding Window]
 ```
+</details>
 
-**Problems:**
+### Common Patterns
+- Frequency counting with hash maps
+- Two-pass hash table technique
+- Set operations for deduplication
+- In-place array modifications
+
+### Problems by Difficulty
+<details>
+<summary>Easy</summary>
+
 - [1. Two Sum](./1/README.md)
-- [121. Best Time to Buy and Sell Stock](./121/README.md)
-- [128. Longest Consecutive Sequence](./128/README.md)
-- [238. Product of Array Except Self](./238/README.md)
 - [242. Valid Anagram](./242/README.md)
+</details>
+
+<details>
+<summary>Medium</summary>
+
 - [49. Group Anagrams](./49/README.md)
+- [238. Product of Array Except Self](./238/README.md)
 - [347. Top K Frequent Elements](./347/README.md)
+</details>
+
+<details>
+<summary>Hard</summary>
+
+- [128. Longest Consecutive Sequence](./128/README.md)
+</details>
+
+### Quick Tips
+- Always consider using a hash table for O(1) lookups
+- Use sets for quick membership testing
+- Consider space-time tradeoffs
+</details>
 
 ---
 
 ## Two Pointers
+<details>
+<summary>Click to expand Two Pointers concepts and problems</summary>
 
-**Concept:** Use two indices to scan through data, often from both ends or to maintain a window.
+### Concept Overview
+Use two indices to scan through data, often from both ends or to maintain a window.
 
-**Main Code Idea:** Move pointers inward/outward to find pairs, reverse arrays, or partition data.
+### [📘 Detailed Notes](./notes/Notes_Two_Pointers.md)
+
+### Main Code Idea
+Move pointers inward/outward to find pairs, reverse arrays, or partition data.
+
+<details>
+<summary>Visual Pattern</summary>
 
 ```mermaid
 graph LR
@@ -162,21 +85,57 @@ graph LR
     B --j--> C[End]
     A --i<j--> C
 ```
+</details>
 
-**Problems:**
-- [15. 3Sum](./15/README.md)
-- [167. Two Sum II - Input Array Is Sorted](./167/README.md)
-- [19. Remove Nth Node From End of List](./19/README.md)
-- [26. Remove Duplicates from Sorted Array](#) *(add if available)*
+### Common Patterns
+- Opposite direction pointers
+- Fast & slow pointers
+- Multiple array traversal
+- Sliding window initialization
+
+### Problems by Difficulty
+<details>
+<summary>Easy</summary>
+
 - [125. Valid Palindrome](./125/README.md)
+- [167. Two Sum II - Input Array Is Sorted](./167/README.md)
+</details>
+
+<details>
+<summary>Medium</summary>
+
+- [15. 3Sum](./15/README.md)
+- [19. Remove Nth Node From End of List](./19/README.md)
+</details>
+
+<details>
+<summary>Coming Soon</summary>
+
+- [26. Remove Duplicates from Sorted Array](#) *(add if available)*
+</details>
+
+### Quick Tips
+- Consider both directions (inward/outward)
+- Watch for off-by-one errors
+- Handle edge cases carefully
+</details>
 
 ---
 
 ## Sliding Window
+<details>
+<summary>Click to expand Sliding Window concepts and problems</summary>
 
-**Concept:** Maintain a window over a subset of data to solve substring/subarray problems efficiently.
+### Concept Overview
+Maintain a window over a subset of data to solve substring/subarray problems efficiently.
 
-**Main Code Idea:** Expand and contract the window to maintain a property (e.g., unique elements, sum, etc.).
+### [📘 Detailed Notes](./notes/Notes_Sliding_Window.md)
+
+### Main Code Idea
+Expand and contract the window to maintain a property (e.g., unique elements, sum, etc.).
+
+<details>
+<summary>Visual Pattern</summary>
 
 ```mermaid
 graph TD
@@ -185,20 +144,51 @@ graph TD
     B -.expand.-> C
     B -.shrink.-> A
 ```
+</details>
 
-**Problems:**
-- [3. Longest Substring Without Repeating Characters](./3/README.md)
+### Common Patterns
+- Fixed size window
+- Variable size window
+- Character frequency counting
+- Dynamic window conditions
+
+### Problems by Difficulty
+<details>
+<summary>Easy</summary>
+
 - [121. Best Time to Buy and Sell Stock](./121/README.md)
-- [567. Permutation in String](./567/README.md)
+</details>
+
+<details>
+<summary>Medium</summary>
+
+- [3. Longest Substring Without Repeating Characters](./3/README.md)
 - [424. Longest Repeating Character Replacement](./424/README.md)
+- [567. Permutation in String](./567/README.md)
+</details>
+
+### Quick Tips
+- Track window state efficiently (hash map/set)
+- Know when to expand vs contract
+- Consider both fixed and variable windows
+</details>
 
 ---
 
 ## Stack
+<details>
+<summary>Click to expand Stack concepts and problems</summary>
 
-**Concept:** LIFO structure for parsing, backtracking, and expression evaluation.
+### Concept Overview
+LIFO (Last In, First Out) structure for parsing, backtracking, and expression evaluation.
 
-**Main Code Idea:** Use a stack to match parentheses, evaluate expressions, or track state.
+### [📘 Detailed Notes](./notes/Notes_Stack.md)
+
+### Main Code Idea
+Use a stack to match parentheses, evaluate expressions, or track state.
+
+<details>
+<summary>Visual Pattern</summary>
 
 ```mermaid
 graph TD
@@ -206,20 +196,53 @@ graph TD
     B --> C[Pop]
     B --> D[Top]
 ```
+</details>
 
-**Problems:**
+### Common Patterns
+- Parentheses matching
+- Expression evaluation
+- Monotonic stack
+- Min/max tracking
+- History tracking
+
+### Problems by Difficulty
+<details>
+<summary>Easy</summary>
+
 - [20. Valid Parentheses](./20/README.md)
 - [155. Min Stack](./155/README.md)
+</details>
+
+<details>
+<summary>Medium</summary>
+
 - [150. Evaluate Reverse Polish Notation](./150/README.md)
 - [739. Daily Temperatures](./739/README.md)
+</details>
+
+### Quick Tips
+- Always check for empty stack before popping
+- Consider using auxiliary stacks for min/max
+- Watch for nested structure patterns
+- Remember LIFO property for history tracking
+</details>
 
 ---
 
 ## Binary Search
+<details>
+<summary>Click to expand Binary Search concepts and problems</summary>
 
-**Concept:** Efficiently search sorted data by halving the search space each step.
+### Concept Overview
+Efficiently search sorted data by halving the search space each step.
 
-**Main Code Idea:** Use left/right pointers and mid calculation to find targets or boundaries.
+### [📘 Detailed Notes](./notes/Notes_Binary_Search.md)
+
+### Main Code Idea
+Use left/right pointers and mid calculation to find targets or boundaries.
+
+<details>
+<summary>Visual Pattern</summary>
 
 ```mermaid
 graph TD
@@ -227,21 +250,59 @@ graph TD
     B --> C[Left]
     B --> D[Right]
 ```
+</details>
 
-**Problems:**
-- [33. Search in Rotated Sorted Array](./33/README.md)
+### Common Patterns
+- Classic binary search
+- Left/right boundary search
+- Rotated array search
+- Matrix binary search
+- Search on answer space
+
+### Problems by Difficulty
+<details>
+<summary>Easy</summary>
+
 - [704. Binary Search](./704/README.md)
-- [153. Find Minimum in Rotated Sorted Array](./153/README.md)
+</details>
+
+<details>
+<summary>Medium</summary>
+
+- [33. Search in Rotated Sorted Array](./33/README.md)
 - [74. Search 2D Matrix](./74/README.md)
 - [875. Koko Eating Bananas](./875/README.md)
+</details>
+
+<details>
+<summary>Hard</summary>
+
+- [153. Find Minimum in Rotated Sorted Array](./153/README.md)
+</details>
+
+### Quick Tips
+- Always handle integer overflow with `mid = left + (right - left) // 2`
+- Consider both inclusive `[left, right]` and exclusive `[left, right)` ranges
+- Watch for infinite loops in while conditions
+- Remember binary search can be used on answer spaces too
+</details>
 
 ---
 
 ## Linked List
+<details>
+<summary>Click to expand Linked List concepts and problems</summary>
 
-**Concept:** Sequential data structure with nodes pointing to the next (and sometimes previous) node.
+### Concept Overview
+Sequential data structure with nodes pointing to the next (and sometimes previous) node.
 
-**Main Code Idea:** Use pointers to traverse, reverse, or manipulate nodes.
+### [📘 Detailed Notes](./notes/Notes_Linked_Lists.md)
+
+### Main Code Idea
+Use pointers to traverse, reverse, or manipulate nodes.
+
+<details>
+<summary>Visual Pattern</summary>
 
 ```mermaid
 graph TD
@@ -249,74 +310,235 @@ graph TD
     B --> C[Node2]
     C --> D[Node3]
 ```
+</details>
 
-**Problems:**
-- [2. Add Two Numbers](./2/README.md)
+### Common Patterns
+- Dummy node technique
+- Fast & slow pointers
+- Multiple pointer manipulation
+- Recursion vs iteration
+
+### Problems by Difficulty
+<details>
+<summary>Easy</summary>
+
 - [21. Merge Two Sorted Lists](./21/README.md)
-- [206. Reverse Linked List](./206/README.md)
 - [141. Linked List Cycle](./141/README.md)
-- [143. Reorder List](./143/README.md)
+- [206. Reverse Linked List](./206/README.md)
+</details>
+
+<details>
+<summary>Medium</summary>
+
+- [2. Add Two Numbers](./2/README.md)
 - [19. Remove Nth Node From End of List](./19/README.md)
+- [143. Reorder List](./143/README.md)
+</details>
+
+<details>
+<summary>Hard</summary>
+
+- [146. LRU Cache](./146/README.md)
+</details>
+
+### Quick Tips
+- Use dummy nodes for cleaner head manipulation
+- Save next pointers before modifying links
+- Consider both iterative and recursive approaches
+</details>
 
 ---
 
 ## Trees
+<details>
+<summary>Click to expand Trees concepts and problems</summary>
 
-**Concept:** Hierarchical data structure with parent-child relationships.
+### Concept Overview
+Hierarchical data structures with parent-child relationships, perfect for representing nested or hierarchical data.
 
-**Main Code Idea:** Use recursion or BFS/DFS to traverse, search, or modify trees.
+### [📘 Detailed Notes](./notes/Notes_Trees.md)
+
+### Main Code Idea
+Use recursion or BFS/DFS to traverse, search, or modify trees. Master the recursive patterns for most tree problems.
+
+<details>
+<summary>Visual Pattern</summary>
 
 ```mermaid
 graph TD
-    A[Root] --> B[Left]
-    A --> C[Right]
-    B --> D[Left.Left]
-    C --> E[Right.Right]
+    A[Root] --> B[Left Subtree]
+    A --> C[Right Subtree]
+    B --> D[DFS: Depth First]
+    C --> E[BFS: Breadth First]
+    D --> F[Preorder/Inorder/Postorder]
+    E --> G[Level Order]
 ```
+</details>
 
-**Problems:**
+### Common Patterns
+- Recursive tree traversal (DFS)
+- Level-order traversal (BFS)
+- Path tracking and state passing
+- BST property utilization
+- Bottom-up vs top-down recursion
+
+### Problems by Difficulty
+<details>
+<summary>Easy</summary>
+
+- [100. Same Tree](./100/README.md)
 - [104. Maximum Depth of Binary Tree](./104/README.md)
+- [110. Balanced Binary Tree](./110/README.md)
 - [226. Invert Binary Tree](./226/README.md)
+- [235. Lowest Common Ancestor of a BST](./235/README.md)
+</details>
+
+<details>
+<summary>Medium</summary>
+
+- [98. Validate Binary Search Tree](./98/README.md)
+- [102. Binary Tree Level Order Traversal](./102/README.md)
+- [230. Kth Smallest Element in a BST](./230/README.md)
 - [543. Diameter of Binary Tree](./543/README.md)
 - [572. Subtree of Another Tree](./572/README.md)
 - [1448. Count Good Nodes in Binary Tree](./1448/README.md)
-- [230. Kth Smallest Element in a BST](./230/README.md)
-- [235. Lowest Common Ancestor of a BST](./235/README.md)
-- [98. Validate Binary Search Tree](./98/README.md)
+</details>
+
+### Quick Tips
+- Most tree problems use recursion naturally
+- Consider both DFS and BFS approaches
+- Pass state through recursion parameters
+- Use BST properties for efficient searches
+- Watch for null node edge cases
+</details>
 
 ---
 
 ## Heap / Priority Queue
+<details>
+<summary>Click to expand Heap / Priority Queue concepts and problems</summary>
 
-**Concept:** Specialized tree-based structure for efficiently retrieving the min/max element.
+### Concept Overview
+Specialized tree-based structure for efficiently retrieving the min/max element, perfect for top-k problems and priority-based processing.
 
-**Main Code Idea:** Use a heap to maintain a dynamic set of elements, always able to access the smallest/largest in O(log n) time.
+### [📘 Detailed Notes](./notes/Notes_Heap.md)
+
+### Main Code Idea
+Use a heap to maintain dynamic access to extremes (min/max). Master the top-k pattern and max-heap simulation.
+
+<details>
+<summary>Visual Pattern</summary>
 
 ```mermaid
 graph TD
-    A[Heap] --> B[Min-Heap]
-    A --> C[Max-Heap]
+    A[Heap] --> B[Min-Heap Default]
+    A --> C[Max-Heap Simulated]
     B --> D[heappush]
     B --> E[heappop]
-    C --> F[Negate values for max-heap]
-    B --> G[Heapify list of lists: key at index 0]
+    C --> F[Negate values: -x]
+    C --> G[Remember to negate back]
+    B --> H[Perfect for Kth Largest]
+    C --> I[Perfect for Kth Smallest]
 ```
+</details>
 
-**Problems:**
+### Common Patterns
+- Top-k element problems
+- Streaming data processing
+- Priority queue operations
+- Max-heap simulation with negation
+- Merge k sorted structures
+
+### Problems by Difficulty
+<details>
+<summary>Easy</summary>
+
 - [703. Kth Largest Element in a Stream](./703/README.md)
-- [347. Top K Frequent Elements](./347/README.md)
 - [1046. Last Stone Weight](./1046/README.md)
+</details>
+
+<details>
+<summary>Medium</summary>
+
+- [215. Kth Largest Element in an Array](./215/README.md)
+- [347. Top K Frequent Elements](./347/README.md)
+- [621. Task Scheduler](./621/README.md)
 - [973. K Closest Points to Origin](./973/README.md)
-- [215. Kth Largest Element in an Array](./215/README.md) <!-- Added link here -->
-- [Notes on heapq library](./Notes.md)
+</details>
+
+### Quick Tips
+- Python heapq is min-heap only - negate for max-heap
+- Use heap for top-k problems efficiently
+- Keep heap size at k for optimal space
+- Remember heap[0] gives minimum (don't pop if just peeking)
+- Use heapify() for bulk initialization
+</details>
 
 ---
 
-## More Topics
-- [36. Valid Sudoku](./36/README.md)
-- [42. Trapping Rain Water](./42/README.md)
-- [49. Group Anagrams](./49/README.md)
+## Backtracking
+<details>
+<summary>Click to expand Backtracking concepts and problems</summary>
+
+### Concept Overview
+Systematically search for solutions by exploring all possibilities and backtracking when paths fail. Essential for combinatorial and constraint satisfaction problems.
+
+### [📘 Detailed Notes](./notes/Notes_Backtracking.md)
+
+### Main Code Idea
+Build solutions incrementally using the choose-explore-unchoose pattern. Master the recursive template for combinations and permutations.
+
+<details>
+<summary>Visual Pattern</summary>
+
+```mermaid
+graph TD
+    A[Start State] --> B[Choose Option]
+    B --> C[Recurse with Choice]
+    C --> D{Valid Solution?}
+    D --Yes--> E[Add to Results]
+    D --No/Continue--> F[More Choices?]
+    F --Yes--> G[Unchoose & Try Next]
+    F --No--> H[Backtrack Up]
+    G --> B
+    H --> I[Return to Previous Level]
+```
+</details>
+
+### Common Patterns
+- Choose-Explore-Unchoose template
+- Constraint checking and early pruning
+- Duplicate handling with sorting
+- Path copying for result collection
+- State restoration after recursion
+
+### Problems by Difficulty
+<details>
+<summary>Easy</summary>
+
+- [17. Letter Combinations of a Phone Number](./17/README.md)
 - [22. Generate Parentheses](./22/README.md)
+</details>
+
+<details>
+<summary>Medium</summary>
+
+- [39. Combination Sum](./39/README.md)
+- [40. Combination Sum II](./40/README.md)
+- [46. Permutations](./46/README.md)
+- [78. Subsets](./78/README.md)
+- [90. Subsets II](./90/README.md)
+- [131. Palindrome Partitioning](./131/README.md)
+- [79. Word Search](./79/README.md)
+</details>
+
+### Quick Tips
+- Always copy the path when adding to results: `result.append(path.copy())`
+- Sort input arrays to handle duplicates easier
+- Use start index for combinations, boolean array for permutations
+- Implement early pruning to optimize performance
+- Remember the backtrack step: `path.pop()`
+</details>
 
 ---
 
