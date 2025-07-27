@@ -542,6 +542,79 @@ graph TD
 
 ---
 
+## Trie (Prefix Tree)
+<details>
+<summary>Click to expand Trie concepts and problems</summary>
+
+### Concept Overview
+Tree-like data structure for storing and retrieving strings efficiently. Each node represents a character, and paths spell out words or prefixes. Perfect for autocomplete, spell checking, and prefix-based operations.
+
+### [📘 Detailed Notes](./notes/Notes_Trie.md)
+
+### Main Code Idea
+Use character-based nodes with self-reassignment pattern for clean traversal. Master the distinction between complete words and prefixes.
+
+<details>
+<summary>Visual Pattern</summary>
+
+```mermaid
+graph TD
+    A[Root] --> B[a]
+    B --> C[p]
+    C --> D[p]
+    D --> E[END: app]
+    D --> F[l]
+    F --> G[e]
+    G --> H[END: apple]
+    A --> I[b]
+    I --> J[a]
+    J --> K[n]
+    K --> L[a]
+    L --> M[n]
+    M --> N[a]
+    N --> O[END: banana]
+```
+</details>
+
+### Common Patterns
+- Dictionary-based vs array-based implementation
+- Self-reassignment for traversal: `self = self.children[char]`
+- Word ending tracking with `is_end` flag
+- Shared prefix optimization
+- Prefix vs complete word distinction
+
+### Problems by Difficulty
+<details>
+<summary>Easy</summary>
+
+- [208. Implement Trie (Prefix Tree)](./208/README.md)
+</details>
+
+<details>
+<summary>Medium</summary>
+
+- [211. Design Add and Search Words Data Structure](#) *(if available)*
+- [212. Word Search II](#) *(if available)*
+- [648. Replace Words](#) *(if available)*
+</details>
+
+<details>
+<summary>Hard</summary>
+
+- [745. Prefix and Suffix Search](#) *(if available)*
+- [1032. Stream of Characters](#) *(if available)*
+</details>
+
+### Quick Tips
+- Use dictionary for flexible character sets, array for fixed sets
+- Remember to mark word endings with `is_end = True`
+- Self-reassignment pattern: `self = self.children[char]`
+- Separate search (complete word) from startsWith (prefix)
+- Handle empty strings and edge cases properly
+</details>
+
+---
+
 **How to Use This Guide:**
 - Click any problem link for your detailed notes and code.
 - Use the mermaid diagrams to visualize the core idea of each topic.
