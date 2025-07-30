@@ -615,6 +615,77 @@ graph TD
 
 ---
 
+## Graph / Connected Components
+<details>
+<summary>Click to expand Graph concepts and problems</summary>
+
+### Concept Overview
+Graph problems involve nodes connected by edges, representing relationships between entities. Connected components are groups of nodes that are reachable from each other. Essential for network analysis, social graphs, and spatial problems.
+
+### [📘 Detailed Notes](./notes/Notes_Graph.md)
+
+### Main Code Idea
+Use DFS/BFS to explore connected components, track visited nodes, and count distinct regions. Master the flood-fill pattern for grid-based graphs.
+
+<details>
+<summary>Visual Pattern</summary>
+
+```mermaid
+graph TD
+    A[Graph] --> B[Connected Components]
+    A --> C[DFS/BFS Traversal]
+    A --> D[Visited Tracking]
+    
+    B --> E[Island Counting]
+    B --> F[Region Detection]
+    B --> G[Component Analysis]
+    
+    C --> H[Recursive DFS]
+    C --> I[Queue-based BFS]
+    C --> J[Direction Vectors]
+    
+    D --> K[In-place Modification]
+    D --> L[Separate Visited Array]
+    D --> M[Set-based Tracking]
+```
+</details>
+
+### Common Patterns
+- Connected components counting
+- Flood fill algorithms
+- Grid-based graph traversal
+- Direction vector exploration
+- In-place vs separate visited tracking
+- DFS vs BFS trade-offs
+
+### Problems by Difficulty
+<details>
+<summary>Easy</summary>
+
+- [200. Number of Islands](./200/README.md)
+</details>
+
+<details>
+<summary>Medium</summary>
+
+</details>
+
+<details>
+<summary>Hard</summary>
+
+</details>
+
+### Quick Tips
+- Use direction vectors for systematic neighbor exploration
+- Consider in-place modification vs separate visited array
+- DFS is often simpler for connected components
+- BFS is better for shortest path problems
+- Always check boundaries before accessing grid cells
+- Count components only when starting new exploration
+</details>
+
+---
+
 **How to Use This Guide:**
 - Click any problem link for your detailed notes and code.
 - Use the mermaid diagrams to visualize the core idea of each topic.
