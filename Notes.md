@@ -668,6 +668,7 @@ graph TD
 <details>
 <summary>Medium</summary>
 
+- [695. Max Area of Island](./695/README.md)
 </details>
 
 <details>
