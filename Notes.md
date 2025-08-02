@@ -669,6 +669,7 @@ graph TD
 <summary>Medium</summary>
 
 - [695. Max Area of Island](./695/README.md)
+- [994. Rotting Oranges](./994/README.md)
 </details>
 
 <details>
@@ -680,9 +681,10 @@ graph TD
 - Use direction vectors for systematic neighbor exploration
 - Consider in-place modification vs separate visited array
 - DFS is often simpler for connected components
-- BFS is better for shortest path problems
+- BFS is better for shortest path problems and simultaneous effects
 - Always check boundaries before accessing grid cells
 - Count components only when starting new exploration
+- For "minimum time" problems with simultaneous effects, prefer BFS over DFS
 </details>
 
 ---
