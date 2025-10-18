@@ -164,6 +164,7 @@ graph TD
 
 - [3. Longest Substring Without Repeating Characters](./3/README.md)
 - [424. Longest Repeating Character Replacement](./424/README.md)
+- [438. Find All Anagrams in a String](./438/README.md)
 - [567. Permutation in String](./567/README.md)
 </details>
 

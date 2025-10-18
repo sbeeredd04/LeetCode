@@ -1,4 +1,4 @@
-# Reorder List (LeetCode 143) - My Learning Journey
+# [143. Reorder List](https://leetcode.com/problems/reorder-list/)
 
 ## Problem Understanding
 

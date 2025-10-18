@@ -1,4 +1,4 @@
-# Lowest Common Ancestor of a Binary Search Tree (LeetCode 235) - My Self-Reflection
+# [235. Lowest Common Ancestor of a Binary Search Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/)
 
 ## The Problem That Clicked Immediately
 

@@ -1,4 +1,4 @@
-# Top K Frequent Elements - Notes
+# [347. Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/)
 
 ## Problem Understanding
 Find the k most frequent elements in an array. Two main approaches exist:

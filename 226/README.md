@@ -1,4 +1,4 @@
-# Invert Binary Tree - Problem 226
+# [226. Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/)
 
 ## Problem Statement
 Given the root of a binary tree, invert the tree, and return its root.

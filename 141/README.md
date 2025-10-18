@@ -1,4 +1,4 @@
-# Linked List Cycle Detection (LeetCode 141) - My Learning Journey
+# [141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)
 
 ## Initial Problem Understanding
 

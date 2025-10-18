@@ -1,4 +1,4 @@
-# Search 2D Matrix (LeetCode 74) - Learning Notes
+# [74. Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/)
 
 ## Problem Understanding
 I need to search for a target value in a 2D matrix with specific properties:

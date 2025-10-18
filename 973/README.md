@@ -1,4 +1,4 @@
-# K Closest Points to Origin - Problem 973
+# [973. K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/)
 
 ## Problem Statement
 Given an array of points on the X-Y plane and an integer k, return the k closest points to the origin (0, 0).

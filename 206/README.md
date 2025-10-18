@@ -1,4 +1,4 @@
-# Reverse Linked List (LeetCode 206) - My Learning Journey
+# [206. Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/)
 
 ## Initial Problem Understanding
 

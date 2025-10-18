@@ -1,4 +1,4 @@
-# Find Minimum in Rotated Sorted Array (LeetCode 153) - Learning Notes
+# [153. Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
 
 ## Problem Understanding
 I need to find the minimum element in a rotated sorted array in O(log n) time. The key insight is that a rotated sorted array has exactly one "pivot point" where the order breaks: `nums[i-1] > nums[i]`. This element `nums[i]` is the minimum.
