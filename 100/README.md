@@ -1,4 +1,4 @@
-# Same Tree (LeetCode 100) - My Learning Journey & Solution Analysis
+# [100. Same Tree](https://leetcode.com/problems/same-tree/)
 
 ## Problem Understanding
 

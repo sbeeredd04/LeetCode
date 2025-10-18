@@ -1,4 +1,4 @@
-# Kth Largest Element in a Stream - Problem 703
+# [703. Kth Largest Element in a Stream](https://leetcode.com/problems/kth-largest-element-in-a-stream/)
 
 ## Problem Statement
 Design a class to find the kth largest element in a stream. Implement the `KthLargest` class:

@@ -1,4 +1,4 @@
-# Binary Search (LeetCode 704) - Learning Notes
+# [704. Binary Search](https://leetcode.com/problems/binary-search/)
 
 ## Problem Understanding
 I need to search for a target value in a sorted array and return its index, or -1 if not found. The key insight is that the array is already sorted, which allows me to use binary search for O(log n) time complexity instead of linear search.

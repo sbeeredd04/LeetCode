@@ -1,4 +1,4 @@
-# 15. 3Sum
+# [15. 3Sum](https://leetcode.com/problems/3sum/)
 
 ## Problem Statement
 Given an integer array `nums`, return all the triplets `[nums[i], nums[j], nums[k]]` such that:

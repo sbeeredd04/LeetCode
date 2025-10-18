@@ -1,4 +1,4 @@
-# Binary Tree Level Order Traversal (LeetCode 102) - My Learning Journey & Algorithm Exploration
+# [102. Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/)
 
 ## Problem Understanding
 

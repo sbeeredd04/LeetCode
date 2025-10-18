@@ -164,6 +164,7 @@ graph TD
 
 - [3. Longest Substring Without Repeating Characters](./3/README.md)
 - [424. Longest Repeating Character Replacement](./424/README.md)
+- [438. Find All Anagrams in a String](./438/README.md)
 - [567. Permutation in String](./567/README.md)
 </details>
 
@@ -538,6 +539,153 @@ graph TD
 - Use start index for combinations, boolean array for permutations
 - Implement early pruning to optimize performance
 - Remember the backtrack step: `path.pop()`
+</details>
+
+---
+
+## Trie (Prefix Tree)
+<details>
+<summary>Click to expand Trie concepts and problems</summary>
+
+### Concept Overview
+Tree-like data structure for storing and retrieving strings efficiently. Each node represents a character, and paths spell out words or prefixes. Perfect for autocomplete, spell checking, and prefix-based operations.
+
+### [📘 Detailed Notes](./notes/Notes_Trie.md)
+
+### Main Code Idea
+Use character-based nodes with self-reassignment pattern for clean traversal. Master the distinction between complete words and prefixes.
+
+<details>
+<summary>Visual Pattern</summary>
+
+```mermaid
+graph TD
+    A[Root] --> B[a]
+    B --> C[p]
+    C --> D[p]
+    D --> E[END: app]
+    D --> F[l]
+    F --> G[e]
+    G --> H[END: apple]
+    A --> I[b]
+    I --> J[a]
+    J --> K[n]
+    K --> L[a]
+    L --> M[n]
+    M --> N[a]
+    N --> O[END: banana]
+```
+</details>
+
+### Common Patterns
+- Dictionary-based vs array-based implementation
+- Self-reassignment for traversal: `self = self.children[char]`
+- Word ending tracking with `is_end` flag
+- Shared prefix optimization
+- Prefix vs complete word distinction
+
+### Problems by Difficulty
+<details>
+<summary>Easy</summary>
+
+- [208. Implement Trie (Prefix Tree)](./208/README.md)
+</details>
+
+<details>
+<summary>Medium</summary>
+
+- [211. Design Add and Search Words Data Structure](#) *(if available)*
+- [212. Word Search II](#) *(if available)*
+- [648. Replace Words](#) *(if available)*
+</details>
+
+<details>
+<summary>Hard</summary>
+
+- [745. Prefix and Suffix Search](#) *(if available)*
+- [1032. Stream of Characters](#) *(if available)*
+</details>
+
+### Quick Tips
+- Use dictionary for flexible character sets, array for fixed sets
+- Remember to mark word endings with `is_end = True`
+- Self-reassignment pattern: `self = self.children[char]`
+- Separate search (complete word) from startsWith (prefix)
+- Handle empty strings and edge cases properly
+</details>
+
+---
+
+## Graph / Connected Components
+<details>
+<summary>Click to expand Graph concepts and problems</summary>
+
+### Concept Overview
+Graph problems involve nodes connected by edges, representing relationships between entities. Connected components are groups of nodes that are reachable from each other. Essential for network analysis, social graphs, and spatial problems.
+
+### [📘 Detailed Notes](./notes/Notes_Graph.md)
+
+### Main Code Idea
+Use DFS/BFS to explore connected components, track visited nodes, and count distinct regions. Master the flood-fill pattern for grid-based graphs.
+
+<details>
+<summary>Visual Pattern</summary>
+
+```mermaid
+graph TD
+    A[Graph] --> B[Connected Components]
+    A --> C[DFS/BFS Traversal]
+    A --> D[Visited Tracking]
+    
+    B --> E[Island Counting]
+    B --> F[Region Detection]
+    B --> G[Component Analysis]
+    
+    C --> H[Recursive DFS]
+    C --> I[Queue-based BFS]
+    C --> J[Direction Vectors]
+    
+    D --> K[In-place Modification]
+    D --> L[Separate Visited Array]
+    D --> M[Set-based Tracking]
+```
+</details>
+
+### Common Patterns
+- Connected components counting
+- Flood fill algorithms
+- Grid-based graph traversal
+- Direction vector exploration
+- In-place vs separate visited tracking
+- DFS vs BFS trade-offs
+
+### Problems by Difficulty
+<details>
+<summary>Easy</summary>
+
+- [200. Number of Islands](./200/README.md)
+</details>
+
+<details>
+<summary>Medium</summary>
+
+- [695. Max Area of Island](./695/README.md)
+- [994. Rotting Oranges](./994/README.md)
+</details>
+
+<details>
+<summary>Hard</summary>
+
+</details>
+
+### Quick Tips
+- Use direction vectors for systematic neighbor exploration
+- Consider in-place modification vs separate visited array
+- DFS is often simpler for connected components
+- BFS is better for shortest path problems and simultaneous effects
+- Always check boundaries before accessing grid cells
+- Count components only when starting new exploration
+- For "minimum time" problems with simultaneous effects, prefer BFS over DFS
 </details>
 
 ---

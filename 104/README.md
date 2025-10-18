@@ -1,4 +1,4 @@
-# Maximum Depth of Binary Tree - Problem 104
+# [104. Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
 
 ## Problem Statement
 Given the root of a binary tree, return its maximum depth.
