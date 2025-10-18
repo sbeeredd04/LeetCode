@@ -1,4 +1,4 @@
-# LRU Cache - My Problem Analysis & Learning Journey
+# [146. LRU Cache](https://leetcode.com/problems/lru-cache/)
 
 ## Problem Statement
 Design a data structure that follows the constraints of a **Least Recently Used (LRU) cache**.

@@ -1,4 +1,4 @@
-# Last Stone Weight - Problem 1046
+# [1046. Last Stone Weight](https://leetcode.com/problems/last-stone-weight/)
 
 ## Problem Statement
 Given a list of stone weights, repeatedly smash the two heaviest stones together. If they are equal, both are destroyed. If not, the smaller is destroyed and the difference is pushed back. Return the weight of the last remaining stone (or 0 if none).

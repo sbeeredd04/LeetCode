@@ -1,4 +1,4 @@
-# Balanced Binary Tree (LeetCode 110) - My Learning Journey & Self-Reflection
+# [110. Balanced Binary Tree](https://leetcode.com/problems/balanced-binary-tree/)
 
 ## Problem Understanding
 

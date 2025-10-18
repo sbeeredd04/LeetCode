@@ -1,4 +1,4 @@
-# Count Good Nodes in Binary Tree (LeetCode 1448) - My Learning Journey
+# [1448. Count Good Nodes in Binary Tree](https://leetcode.com/problems/count-good-nodes-in-binary-tree/)
 
 ## Problem Understanding
 

@@ -1,4 +1,4 @@
-# Daily Temperatures Problem (LeetCode 739)
+# [739. Daily Temperatures](https://leetcode.com/problems/daily-temperatures/)
 
 ## Problem Description
 Given an array of integers `temperatures` representing daily temperatures, return an array where each element represents how many days you have to wait after that day to get a warmer temperature. If there is no future day for which this is possible, keep it as 0.

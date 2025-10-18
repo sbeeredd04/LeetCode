@@ -1,4 +1,4 @@
-# Add Two Numbers (LeetCode 2) - My Learning Journey
+# [2. Add Two Numbers](https://leetcode.com/problems/add-two-numbers/)
 
 ## Problem Understanding
 

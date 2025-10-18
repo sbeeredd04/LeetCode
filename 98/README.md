@@ -1,4 +1,4 @@
-# Validate Binary Search Tree (LeetCode 98) - My Learning Journey
+# [98. Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/)
 
 ## Problem Understanding
 

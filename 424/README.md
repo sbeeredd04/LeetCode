@@ -1,4 +1,4 @@
-# Longest Repeating Character Replacement - Problem Analysis & Learning
+# [424. Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/)
 
 ## Problem Statement
 Given a string `s` and an integer `k`, you can choose any character of the string and change it to any other uppercase English letter. You can perform this operation at most `k` times.

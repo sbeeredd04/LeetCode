@@ -1,4 +1,4 @@
-# 215. Kth Largest Element in an Array - Self-Reflection & Learning Notes
+# [215. Kth Largest Element in an Array - Self-Reflection & Learning Notes](https://leetcode.com/problems/kth-largest-element-in-an-array/)
 
 ## Problem Recap
 Given an unsorted array, I needed to find the kth largest element. This is a classic selection problem that can be solved efficiently with a heap.

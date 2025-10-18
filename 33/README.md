@@ -1,4 +1,4 @@
-# Search in Rotated Sorted Array (LeetCode 33) - Learning Notes
+# [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
 
 ## Problem Understanding
 I need to search for a target value in a rotated sorted array in O(log n) time. The challenge is that the array is rotated at some pivot, creating two sorted subarrays. My approach: find the pivot point, then perform binary search on the appropriate half.
