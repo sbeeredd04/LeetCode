@@ -658,6 +658,8 @@ graph TD
 - Direction vector exploration
 - In-place vs separate visited tracking
 - DFS vs BFS trade-offs
+- Multi-source traversal from boundaries
+- Reverse flow thinking (reachability from target)
 
 ### Problems by Difficulty
 <details>
@@ -669,6 +671,7 @@ graph TD
 <details>
 <summary>Medium</summary>
 
+- [417. Pacific Atlantic Water Flow](./417/README.md)
 - [695. Max Area of Island](./695/README.md)
 - [994. Rotting Oranges](./994/README.md)
 </details>
@@ -686,6 +689,8 @@ graph TD
 - Always check boundaries before accessing grid cells
 - Count components only when starting new exploration
 - For "minimum time" problems with simultaneous effects, prefer BFS over DFS
+- **Reverse thinking**: Sometimes it's easier to ask "what can reach here?" instead of "where can I go?"
+- **Multi-source traversal**: Start from multiple boundary points for problems involving reaching edges or boundaries
 </details>
 
 ---
