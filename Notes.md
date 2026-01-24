@@ -695,6 +695,67 @@ graph TD
 
 ---
 
+## Dynamic Programming (1D)
+<details>
+<summary>Click to expand Dynamic Programming concepts and problems</summary>
+
+### Concept Overview
+Dynamic Programming solves complex problems by breaking them down into simpler subproblems and storing the results to avoid redundant calculations. The key is recognizing overlapping subproblems and optimal substructure.
+
+### Main Code Idea
+Build solutions from base cases up, storing intermediate results in an array or variables. Identify the recurrence relation: how does the answer for `n` relate to smaller values?
+
+<details>
+<summary>Visual Pattern</summary>
+
+```mermaid
+graph TD
+    A[Problem n] --> B[Subproblem n-1]
+    A --> C[Subproblem n-2]
+    B --> D[Smaller Subproblems]
+    C --> D
+    D --> E[Base Cases]
+    E --> F[Build Up to n]
+    F --> G[Memoization/DP Array]
+```
+</details>
+
+### Common Patterns
+- Fibonacci-like sequences
+- Bottom-up array building
+- Space optimization (only keeping last k values)
+- Recurrence relation identification
+- Top-down memoization vs bottom-up tabulation
+
+### Problems by Difficulty
+<details>
+<summary>Easy</summary>
+
+- [70. Climbing Stairs](./70/README.md)
+</details>
+
+<details>
+<summary>Medium</summary>
+
+- [198. House Robber](#) *(if available)*
+- [322. Coin Change](#) *(if available)*
+</details>
+
+<details>
+<summary>Hard</summary>
+
+</details>
+
+### Quick Tips
+- Always identify the recurrence relation first
+- Start with base cases (n=0, n=1, n=2)
+- Consider space optimization after getting it working
+- Draw out small examples to see the pattern
+- DP is recursion + memoization
+</details>
+
+---
+
 **How to Use This Guide:**
 - Click any problem link for your detailed notes and code.
 - Use the mermaid diagrams to visualize the core idea of each topic.
