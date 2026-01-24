@@ -732,6 +732,7 @@ graph TD
 <summary>Easy</summary>
 
 - [70. Climbing Stairs](./70/README.md)
+- [746. Min Cost Climbing Stairs](./746/README.md)
 </details>
 
 <details>
